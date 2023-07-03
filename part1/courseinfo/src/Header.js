@@ -1,9 +1,5 @@
 const Header = ({ course }) => {
-  return (
-    <div>
-      <h1>{course}</h1>
-    </div>
-  );
+  return <h1>{course.name}</h1>;
 };
 
 export default Header;
