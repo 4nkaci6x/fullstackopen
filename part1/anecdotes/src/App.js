@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 
 const App = () => {
   const anecdotes = [
@@ -26,14 +27,29 @@ const App = () => {
     setVotes(copy);
   };
 
+  const findMostVoted = () => {
+    let mostVotedIndex = 0;
+    for (let i = 0; i < votes.length; i++) {
+      if (votes[i] > votes[mostVotedIndex]) {
+        mostVotedIndex = i;
+      }
+    }
+    return mostVotedIndex;
+  };
+
   return (
     <div>
+      <h2>Anecdote of the day</h2>
       {anecdotes[selected]}
       <p>has {votes[selected]} votes</p>
       <p>
         <button onClick={handleVote}>vote</button>
         <button onClick={handleNext}>next anecdote</button>
       </p>
+
+      <h2>Anecdote with most votes</h2>
+      {anecdotes[findMostVoted()]}
+      <p>has {votes[findMostVoted()]} votes.</p>
     </div>
   );
 };
