@@ -12,9 +12,12 @@ const Statistics = ({ good, neutral, bad, all }) => {
         <StatisticLine text='all' value={all} />
         <StatisticLine
           text='average'
-          value={(good * 1 + neutral * 0 + bad * -1) / all}
+          value={((good * 1 + neutral * 0 + bad * -1) / all).toFixed(1)}
         />
-        <StatisticLine text='positive' value={(good / all) * 100 + ' %'} />
+        <StatisticLine
+          text='positive'
+          value={((good / all) * 100).toFixed(1) + ' %'}
+        />
       </div>
     );
   }
