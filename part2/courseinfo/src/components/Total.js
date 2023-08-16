@@ -1,9 +1,12 @@
-const Total = ({ parts }) => {
+import './Total.css';
+
+const Total = ({ course }) => {
+  const total = course.parts.reduce((acc, current) => {
+    return acc + current.exercises;
+  }, 0);
   return (
     <div>
-      <p>
-        Total {parts[0].exercises + parts[1].exercises + parts[2].exercises}
-      </p>
+      <p className='total'>total of {total} exercises</p>
     </div>
   );
 };
