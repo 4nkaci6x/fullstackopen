@@ -7,12 +7,20 @@ const App = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newPerson = {
-      name: newName
-    };
-    setPersons(persons.concat(newPerson));
-
-    setNewName('');
+    if (
+      persons.find(
+        person => person.name.toLowerCase() === newName.toLowerCase()
+      )
+    ) {
+      alert(`${newName} is already added to phonebook`);
+      setNewName('');
+    } else {
+      const newPerson = {
+        name: newName
+      };
+      setPersons(persons.concat(newPerson));
+      setNewName('');
+    }
   };
 
   const handleNewNameChange = event => {
@@ -24,7 +32,8 @@ const App = () => {
       <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          name: <input value={newName} onChange={handleNewNameChange} />
+          name:{' '}
+          <input value={newName} onChange={handleNewNameChange} autoFocus />
         </div>
         <div>
           <button type='submit'>add</button>
